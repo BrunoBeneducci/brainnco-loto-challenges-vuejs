@@ -1,0 +1,212 @@
+@import './variables';
+
+// PAGES
+.page {
+    height: 100vh;
+    display: flex;
+
+    .page-box-left,
+    .page-box-404 {
+        background-color: $megasena;
+    }
+
+    &.mega-sena {
+        .page-box-left {
+            background-color: $megasena;
+        }
+    }
+
+    &.quina {
+        .page-box-left {
+            background-color: $quina;
+        }
+    }
+
+    &.lotofácil {
+        .page-box-left {
+            background-color: $lotofacil;
+        }
+    }
+
+    &.lotomania {
+        .page-box-left {
+            background-color: $lotomania;
+        }
+    }
+
+    &.timemania {
+        .page-box-left {
+            background-color: $timemania;
+        }
+    }
+
+    &.dia-de-sorte {
+        .page-box-left {
+            background-color: $diadesorte;
+        }
+    }
+    
+    &-box-left {
+        width: 600px;
+        padding: 50px;
+        position: relative;
+        
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        justify-content: space-between;
+        
+        @media(max-width: 1100px) {
+            width: 450px;
+        }
+
+        &:after {
+            content: '';
+            background-image: url(../assets/fx-desk.svg);
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: right center;
+            width: 250px;
+            height: 100vh;
+            display: block;
+            position: absolute;
+            right: 0;
+            top: 0;
+            pointer-events: none;
+        }
+
+        .page-box-title {
+            display: flex;
+            align-items: center;
+
+            img {
+                width: 62px;
+                margin-right: 10px;
+            }
+
+            h1 {
+                color: #fff;
+                text-transform: uppercase;
+                font-size: 30px;
+            }
+        }
+        
+        .page-box-footer {
+            color: #fff;
+            
+            h2 {
+                text-transform: uppercase;
+                font-size: 13px;
+                letter-spacing: 2px;
+                font-weight: 500;
+            }
+            
+            h3 {
+                text-transform: uppercase;
+                font-size: 20px;
+            }
+        }
+    }
+
+    &-box-right {
+        background-color: #efefef;
+        flex: 1;
+
+        .page-box-result {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+    }
+
+    .page-box-404 {
+        width: 100%;
+        min-height: 100vh;
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .page-box-title {
+            text-align: center;
+
+            h1, p {
+                color: $gray;
+            }
+
+            h1 {
+                margin: 10px 0 5px;
+            }
+
+            a {
+                display: inline-block;
+                // border: 1px solid #fff;
+                background-color: $gray;
+                color: #fff;
+                font-weight: 700;
+                padding: 10px 20px;
+                margin: 20px 0 0;
+                border-radius: 8px;
+                text-decoration: none;
+                transition: filter 0.3s;
+
+                &:hover {
+                    filter: brightness(0.8);
+                }
+            }
+        }
+
+        &:after {
+            content: none;
+        }
+    }
+
+    @media(max-width: 900px) {
+        flex-direction: column;
+        height: auto;
+
+        &-box-left,
+        &-box-right {
+            width: 100%;
+        }
+
+        &-box-left {
+            height: 400px;
+            align-items: center;
+            padding: 40px;
+
+            &:after {
+                content: none;
+            }
+
+            .page-box-title {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .page-box-footer {
+                text-align: center;
+            }
+        }
+
+        &-box-right {
+            .page-box-result {
+                padding: 80px 40px;
+                height: auto;
+            }
+        }
+    }
+
+    @media(max-width: 400px) {
+        &-box-left {
+            padding: 40px 20px;
+        }
+
+        &-box-right {
+            .page-box-result {
+                padding: 80px 20px;
+            }
+        }
+    }
+}

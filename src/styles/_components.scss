@@ -1,0 +1,130 @@
+@import './variables';
+
+// FULL LOADER
+.full-loader {
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    pointer-events: none;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity ease 0.6s;
+    
+    background-color: $megasena;
+
+    img {
+        animation: rotation 2s infinite linear;
+    }
+
+    @keyframes rotation {
+		from {
+				-webkit-transform: rotate(0deg);
+		}
+		to {
+				-webkit-transform: rotate(359deg);
+		}
+    }
+    
+    &.active {
+        z-index: 100;
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+// SELECT
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+    outline: 0;
+    box-shadow: none;
+    border: 0 !important;
+    background: #fff;
+    background-image: none;
+    text-transform: capitalize;
+}
+
+select::-ms-expand {
+    display: none;
+}
+
+select {
+    flex: 1;
+    padding: 15px;
+    color: #333;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+// CUSTOM SELECT
+.select {
+    position: relative;
+    display: flex;
+    width: 230px;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.select:after {
+    content: '';
+    position: absolute;
+    top: 20px;
+    right: 15px;
+    cursor: pointer;
+    pointer-events: none;
+    -webkit-transition: .25s all ease;
+    -o-transition: .25s all ease;
+    transition: .25s all ease;
+
+    background-image: url(../assets/caret-down.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 14px;
+    height: 14px;
+}
+
+
+// RESULT GAME
+ul.result-game {
+    list-style: none;
+    padding: 0;
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    li {
+        height: 100px;
+        width: 100px;
+        background-color: #fff;
+        border-radius: 50%;
+        margin: 10px;
+
+        @media(max-width: 1300px) {
+            height: 80px;
+            width: 80px;
+        }
+
+        @media(max-width: 1100px) {
+            height: 70px;
+            width: 70px;
+        }
+
+        font-weight: 700;
+        font-size: 27px;
+        color: #333;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
