@@ -13,7 +13,7 @@
 
         <div class="page-box-footer">
             <h2>Concurso</h2>
-            <h3>{{ contestId ? contestId : '0000' }} - {{ contestDate ? contestDate : '00/00/0000' }}</h3>
+            <h3>{{ contestId }} - {{ contestDate | formatDate }}</h3>
         </div>
     </div>
 
@@ -27,9 +27,10 @@
 </template>
 
 <script>
-import SelectGame from '../components/SelectGame.vue'
-import ResultGame from '../components/ResultGame.vue'
-import EventBus from '../event-bus'
+import SelectGame from '../components/SelectGame.vue';
+import ResultGame from '../components/ResultGame.vue';
+import EventBus from '../event-bus';
+import moment from 'moment';
 
 export default {
   name: 'LayoutBase',
@@ -41,8 +42,8 @@ export default {
   data() {
     return {
       contestNumbers: [],
-      contestId: '',
-      contestDate: '',
+      contestId: '0000',
+      contestDate: '00/00/0000',
       gameSelected: 'Mega-Sena'
     }
   },
@@ -50,6 +51,9 @@ export default {
   filters: {
       splitNamePage(str) {
           return str.split(" ").join("-").toLowerCase()
+      },
+      formatDate(str) {
+          return moment(str).format('DD/MM/YYYY')
       }
   },
 
