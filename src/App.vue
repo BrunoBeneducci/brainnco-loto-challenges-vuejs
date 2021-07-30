@@ -1,17 +1,12 @@
 <template>
   <div id="app">
-    <LayoutBase />
+    <router-view />
   </div>
 </template>
 
 <script>
-import LayoutBase from './pages/LayoutBase.vue'
-
 export default {
   name: 'App',
-  components: {
-    LayoutBase
-  },
 }
 </script>
 

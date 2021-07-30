@@ -21,21 +21,33 @@ export default {
   components: {
       FullLoader
   },
+
   data() {
       return {
           games: Array,
-          selectedGame: 0,
+          selectedGame: Number,
           loaderStatus: true,
       }
   },
 
   mounted() {
-    api.get('/loterias').then((res) => {
+    api.get('/loterias')
+    .then((res) => {
         if(res.status === 200) {
             this.games = res.data;
-            this.getContests(0);
         }
     })
+    .then(() => {
+        if(this.$route.path === "/") {
+            this.selectedGame = 0;
+        }
+    });
+
+    EventBus.$on('routeIdSelected', (data) => {
+        setTimeout(() => {
+            this.selectedGame = data;
+        }, 1000);
+    });
   },
 
   filters: {
@@ -54,6 +66,30 @@ export default {
 
   methods: {
       getContests(id) {
+        if(id === 0) {
+            this.$router.push({ name: 'mega-sena' }).catch(()=>{})
+        }
+
+        if(id === 1) {
+            this.$router.push({ name: 'quina' }).catch(()=>{})
+        }
+
+        if(id === 2) {
+            this.$router.push({ name: 'lotofacil' }).catch(()=>{})
+        }
+
+        if(id === 3) {
+            this.$router.push({ name: 'lotomania' }).catch(()=>{})
+        }
+
+        if(id === 4) {
+            this.$router.push({ name: 'timemania' }).catch(()=>{})
+        }
+
+        if(id === 5) {
+            this.$router.push({ name: 'dia-de-sorte' }).catch(()=>{})
+        }
+
         function lotoId(v) {
             return v.loteriaId === id;
         } 

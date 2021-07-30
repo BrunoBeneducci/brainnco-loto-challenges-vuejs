@@ -13,7 +13,7 @@
 
         <div class="page-box-footer">
             <h2>Concurso</h2>
-            <h3>{{ contestId }} - {{ contestDate | formatDate }}</h3>
+            <h3>{{ contestId }} - {{ contestDate }}</h3>
         </div>
     </div>
 
@@ -33,10 +33,13 @@ import EventBus from '../event-bus';
 import moment from 'moment';
 
 export default {
-  name: 'LayoutBase',
+  name: 'Home',
   components: {
     SelectGame,
     ResultGame
+  },
+  props: {
+    propsRoute: Number
   },
 
   data() {
@@ -44,29 +47,30 @@ export default {
       contestNumbers: [],
       contestId: '0000',
       contestDate: '00/00/0000',
-      gameSelected: 'Mega-Sena'
+      gameSelected: 'Mega-Sena',
     }
   },
 
   filters: {
       splitNamePage(str) {
           return str.split(" ").join("-").toLowerCase()
-      },
-      formatDate(str) {
-          return moment(str).format('DD/MM/YYYY')
       }
   },
 
-  created() {
+  mounted() {
     EventBus.$on('contestSelected', (data) => {
       this.contestNumbers = data.numeros;
       this.contestId = data.id;
-      this.contestDate = data.data;
+      this.contestDate = moment(data.data).format('DD/MM/YYYY');
     });
 
     EventBus.$on('gameSelected', (data) => {
+      if(data) {
         this.gameSelected = data.nome;
+      }
     });
+
+    EventBus.$emit('routeIdSelected', this.propsRoute);
   }
 }
 </script>
