@@ -7,7 +7,7 @@ Este projeto foi realizado a partir de um challenge da Brainn Co. https://github
 
 ![Captura de Tela 2022-12-06 às 10 20 43](https://user-images.githubusercontent.com/13121896/205925270-749b9fba-0f83-4c11-b99d-da51fb5c929c.png)
 
-![Captura de Tela 2022-12-06 às 10 20 43](https://user-images.githubusercontent.com/13121896/205925280-e2ba36f5-bb8b-40fa-bef2-9e22b9bb5017.png)
+![Captura de Tela 2022-12-06 às 10 21 45](https://user-images.githubusercontent.com/13121896/205925898-87e18b9d-f182-4e5b-9644-439a6f0e9aec.png)
 
 ## Para rodar o projeto
 
